@@ -1,0 +1,31 @@
+{
+  
+  "accountAssociation": {
+    
+  },
+
+
+  "frame": {
+    "version": "1",
+    "name": "1024",
+    "iconUrl": "https://sprightly-kringle-3f3e1d.netlify.app/images/icon.png",
+    "homeUrl": "https://sprightly-kringle-3f3e1d.netlify.app/frame.html",
+    "imageUrl": "https://sprightly-kringle-3f3e1d.netlify.app/images/banner.png",
+    "buttonTitle": "Play 1024",
+    "splashImageUrl": "https://sprightly-kringle-3f3e1d.netlify.app/images/splash.png",
+    "splashBackgroundColor": "#180822",
+    "subtitle": "Surf the sky and collect coins",
+    "description": "A fun game where you surf the sky and collect coins!",
+    "primaryCategory": "games",
+    "tags": ["puzzle", "game", "numbers", "tiles"],
+    "heroImageUrl": "https://sprightly-kringle-3f3e1d.netlify.app/images/banner.png",
+    "tagline": "Surf, collect, score big!",
+    "ogTitle": "Addictive Sky Surfing Game",
+    "ogDescription": "Play 1024 and surf through the sky collecting coins in this addictive mini-game!",
+    "ogImageUrl": "https://sprightly-kringle-3f3e1d.netlify.app/images/banner.png",
+    "screenshotUrls": [
+      "https://sprightly-kringle-3f3e1d.netlify.app/images/banner.png"
+    ],
+    "noIndex": false
+  }
+}

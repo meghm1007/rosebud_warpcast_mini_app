@@ -1,0 +1,29 @@
+# netlify.toml
+
+[build]
+  publish   = "public"
+  functions = "api"
+
+# 1) Serve .well-known as static
+[[redirects]]
+  from   = "/.well-known/*"
+  to     = "/.well-known/:splat"
+  status = 200
+
+# 2) CORS so Farcaster can fetch your manifest
+[[headers]]
+  for = "/.well-known/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+
+# 3) Your Netlify Functions
+[[redirects]]
+  from   = "/api/*"
+  to     = "/.netlify/functions/:splat"
+  status = 200
+
+# 4) SPA fallback
+[[redirects]]
+  from   = "/*"
+  to     = "/index.html"
+  status = 200

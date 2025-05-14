@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1024 — Frame</title>
+
+    <meta
+      property="fc:frame"
+      content='{"version":"1","image":"https://sprightly-kringle-3f3e1d.netlify.app/images/banner.png","buttons":[{"label":"Play 1024","action":"post"}]}'
+    />
+
+    <!-- Open Graph meta tags for better social sharing -->
+    <meta property="og:title" content="1024 - Addictive Sky Surfing Game" />
+    <meta property="og:description" content="Play 1024 and surf through the sky collecting coins in this addictive mini-game!" />
+    <meta property="og:image" content="https://sprightly-kringle-3f3e1d.netlify.app/images/banner.png" />
+    <meta property="og:url" content="https://sprightly-kringle-3f3e1d.netlify.app/frame.html" />
+    <meta property="og:type" content="website" />
+    <meta name="description" content="A fun game where you surf the sky and collect coins!" />
+    <meta name="keywords" content="puzzle, game, numbers, tiles, 1024, farcaster, mini app" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Farcaster Frame SDK -->
+    <script type="module">
+      import { sdk } from "https://esm.sh/@farcaster/frame-sdk";
+      window.farcasterSdk = sdk;
+    </script>
+    <style>
+      :root {
+        --theme-color: #900;
+        --theme-color-light: #c00;
+        --theme-color-dark: #600;
+
+        background-color: #121212;
+        color: rgba(255, 255, 255, 0.87);
+        color-scheme: light dark;
+        font-family: "Orbitron", sans-serif;
+        font-synthesis: none;
+        font-weight: 400;
+        line-height: 1.5;
+        text-rendering: optimizeLegibility;
+
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-text-size-adjust: 100%;
+      }
+
+      body {
+        margin: 0;
+        display: flex;
+        min-width: 320px;
+        min-height: 100vh;
+        overflow: hidden;
+        background-color: #121212;
+        background-image: linear-gradient(
+          135deg,
+          rgba(80, 0, 0, 0.2) 0%,
+          rgba(20, 0, 0, 0.05) 100%
+        );
+        background-size: 100% 100%;
+        background-position: 0 0;
+      }
+
+      #root {
+        width: 100%;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .app-container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        margin: 0;
+        max-width: 424px;
+        position: relative;
+      }
+
+      .app-container::before {
+        content: "";
+        position: absolute;
+        top: -10px;
+        left: -10px;
+        right: -10px;
+        bottom: -10px;
+        background: linear-gradient(
+          135deg,
+          var(--theme-color-dark),
+          var(--theme-color)
+        );
+        border-radius: 16px;
+        z-index: -1;
+        opacity: 0.3;
+        filter: blur(10px);
+      }
+
+      #game-container {
+        width: 100%;
+        height: 100%;
+        max-width: 424px;
+        max-height: 615px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        position: relative;
+        box-shadow: 0 0 20px rgba(100, 0, 0, 0.3);
+        border: 2px solid var(--theme-color-dark);
+        border-radius: 12px;
+        background: linear-gradient(135deg, #300 0%, #200 100%);
+      }
+
+      #game-container iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        flex-grow: 1;
+        overflow: hidden;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE and Edge */
+      }
+
+      #game-container iframe::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera */
+      }
+
+      .game-header {
+        width: 100%;
+        padding: 10px 0;
+        text-align: center;
+        background: linear-gradient(
+          135deg,
+          var(--theme-color-dark),
+          var(--theme-color) 100%
+        );
+        color: white;
+        margin-bottom: 5px;
+        border-radius: 12px 12px 0 0;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      .game-header h2 {
+        margin: 0;
+        font-size: 1.2rem;
+        font-weight: 700;
+        font-family: "Press Start 2P", cursive;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      .game-footer {
+        width: 100%;
+        padding: 10px 0 20px;
+        text-align: center;
+        background: linear-gradient(
+          135deg,
+          var(--theme-color-dark) 0%,
+          var(--theme-color) 100%
+        );
+        color: white;
+        margin-top: 5px;
+        border-radius: 0 0 12px 12px;
+        font-size: 0.8rem;
+        box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      .game-footer p {
+        margin: 0 0 15px 0;
+        padding: 0 10px;
+        font-weight: 500;
+        font-family: "Orbitron", sans-serif;
+        font-size: 0.75rem;
+        letter-spacing: 0.5px;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+      }
+
+      /* Game instructions */
+      .game-instructions {
+        display: flex;
+        justify-content: space-around;
+        padding: 0 10px;
+        font-size: 0.8rem;
+      }
+
+      .game-instructions .instruction {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        font-weight: 500;
+        background: linear-gradient(
+          135deg,
+          var(--theme-color-dark) 0%,
+          var(--theme-color) 100%
+        );
+        padding: 5px;
+        border-radius: 50%;
+        margin: 0 5px;
+        width: 40px;
+        height: 40px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 0 8px rgba(100, 0, 0, 0.4);
+        flex-direction: column;
+        position: relative;
+      }
+
+      .game-instructions .instruction-icon {
+        margin-bottom: 2px;
+        font-size: 1.1rem;
+        animation: pulse 1.5s infinite;
+      }
+
+      .instruction-text {
+        font-size: 0.55rem;
+        font-family: "Orbitron", sans-serif;
+        position: absolute;
+        bottom: -18px;
+        white-space: nowrap;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      /* Game overlay */
+      .game-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 10;
+        animation: fadeOut 1s ease-in-out forwards;
+      }
+
+      @keyframes fadeOut {
+        0% {
+          opacity: 1;
+        }
+        80% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+          visibility: hidden;
+        }
+      }
+
+      .game-overlay-content {
+        text-align: center;
+        color: white;
+        background: linear-gradient(
+          135deg,
+          var(--theme-color-dark) 0%,
+          var(--theme-color) 100%
+        );
+        padding: 20px 40px;
+        border-radius: 15px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 0 20px rgba(100, 0, 0, 0.4);
+        animation: pulse-overlay 0.8s infinite alternate;
+      }
+
+      @keyframes pulse-overlay {
+        from {
+          transform: scale(1);
+        }
+        to {
+          transform: scale(1.05);
+        }
+      }
+
+      .game-overlay-content h3 {
+        margin: 0 0 10px;
+        font-size: 1.5rem;
+        font-family: "Press Start 2P", cursive;
+      }
+
+      .loading-dots {
+        display: flex;
+        justify-content: center;
+      }
+
+      .loading-dots span {
+        font-size: 2rem;
+        animation: loading-dots 1s infinite;
+      }
+
+      .loading-dots span:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+
+      .loading-dots span:nth-child(3) {
+        animation-delay: 0.4s;
+      }
+
+      @keyframes loading-dots {
+        0%,
+        100% {
+          opacity: 0.3;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Game configuration
+        const gameConfig = {
+          gameUrl: "https://rosebud.ai/p/87e3e2e5-f736-4110-87b4-de1ac505d45b",
+          title: "1024",
+          description: "Surf the sky and collect coins",
+          buttons: {
+            button1: {
+              icon: "🪙",
+              text: "Coins",
+            },
+            button2: {
+              icon: "🪨",
+              text: "Stone",
+            },
+            button3: {
+              icon: "🏆",
+              text: "Win",
+            },
+          }
+        };
+
+        // Create app container
+        const appContainer = document.createElement("div");
+        appContainer.className = "app-container";
+
+        // Create header
+        const header = document.createElement("div");
+        header.className = "game-header";
+        const headerTitle = document.createElement("h2");
+        headerTitle.textContent = gameConfig.title;
+        header.appendChild(headerTitle);
+        appContainer.appendChild(header);
+
+        // Create game container
+        const gameContainer = document.createElement("div");
+        gameContainer.id = "game-container";
+
+        // Create game iframe
+        const iframe = document.createElement("iframe");
+        iframe.src = gameConfig.gameUrl;
+        iframe.frameBorder = "0";
+        iframe.allowFullscreen = true;
+        iframe.allow =
+          "autoplay; fullscreen *; geolocation; microphone; camera; midi; monetization; xr-spatial-tracking; gamepad; gyroscope; accelerometer; xr; cross-origin-isolated";
+        iframe.sandbox =
+          "allow-forms allow-scripts allow-same-origin allow-popups allow-pointer-lock allow-top-navigation";
+        iframe.scrolling = "no";
+        iframe.style.overflow = "hidden";
+        gameContainer.appendChild(iframe);
+
+        // Create loading overlay
+        const overlay = document.createElement("div");
+        overlay.className = "game-overlay";
+
+        const overlayContent = document.createElement("div");
+        overlayContent.className = "game-overlay-content";
+
+        const overlayTitle = document.createElement("h3");
+        overlayTitle.textContent = "GET READY";
+        overlayContent.appendChild(overlayTitle);
+
+        const loadingDots = document.createElement("div");
+        loadingDots.className = "loading-dots";
+
+        for (let i = 0; i < 3; i++) {
+          const dot = document.createElement("span");
+          dot.textContent = ".";
+          loadingDots.appendChild(dot);
+        }
+
+        overlayContent.appendChild(loadingDots);
+        overlay.appendChild(overlayContent);
+        gameContainer.appendChild(overlay);
+
+        appContainer.appendChild(gameContainer);
+
+        // Create footer
+        const footer = document.createElement("div");
+        footer.className = "game-footer";
+
+        const description = document.createElement("p");
+        description.textContent = gameConfig.description;
+        footer.appendChild(description);
+
+        const instructions = document.createElement("div");
+        instructions.className = "game-instructions";
+
+        // Add button instructions
+        const buttonConfigs = [
+          gameConfig.buttons.button1,
+          gameConfig.buttons.button2,
+          gameConfig.buttons.button3,
+        ];
+
+        buttonConfigs.forEach((btnConfig) => {
+          const instruction = document.createElement("div");
+          instruction.className = "instruction";
+
+          const icon = document.createElement("span");
+          icon.className = "instruction-icon";
+          icon.textContent = btnConfig.icon;
+
+          const text = document.createElement("span");
+          text.className = "instruction-text";
+          text.textContent = btnConfig.text;
+
+          instruction.appendChild(icon);
+          instruction.appendChild(text);
+          instructions.appendChild(instruction);
+        });
+
+        footer.appendChild(instructions);
+        appContainer.appendChild(footer);
+
+        // Append to root
+        document.getElementById("root").appendChild(appContainer);
+
+        // Function to resize the game container
+        const resizeGame = () => {
+          if (!gameContainer) return;
+
+          // Set dimensions to fit Warpcast mini app (424px wide by 695px tall)
+          const maxWidth = 424;
+          const maxHeight = 615; // Leaving space for header and footer
+
+          let width = Math.min(window.innerWidth, maxWidth);
+          let height = Math.min(window.innerHeight - 80, maxHeight); // 80px for header/footer
+
+          gameContainer.style.width = width + "px";
+          gameContainer.style.height = height + "px";
+        };
+
+        // Call resize initially and add event listeners
+        resizeGame();
+        window.addEventListener("resize", resizeGame);
+        window.addEventListener("orientationchange", resizeGame);
+
+        // Hide overlay after a delay and tell Farcaster the app is ready
+        setTimeout(() => {
+          overlay.style.display = "none";
+          if (window.farcasterSdk) {
+            window.farcasterSdk.actions.ready();
+          }
+        }, 2000);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+// Netlify serverless function for handling Warpcast frame requests
+exports.handler = async function(event, context) {
+  // Set CORS headers
+  const headers = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'Content-Type',
+    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+    'Content-Type': 'application/json'
+  };
+
+  // Handle OPTIONS request (preflight)
+  if (event.httpMethod === 'OPTIONS') {
+    return {
+      statusCode: 200,
+      headers,
+      body: ''
+    };
+  }
+
+  // Return frame information with correct URLs
+  return {
+    statusCode: 200,
+    headers,
+    body: JSON.stringify({
+      frame: {
+        version: '1',
+        name: '1024',
+        iconUrl: 'https://sprightly-kringle-3f3e1d.netlify.app/images/icon.png',
+        homeUrl: 'https://sprightly-kringle-3f3e1d.netlify.app/frame.html',
+        imageUrl: 'https://sprightly-kringle-3f3e1d.netlify.app/images/banner.png',
+        buttonTitle: 'Play 1024',
+        splashImageUrl: 'https://sprightly-kringle-3f3e1d.netlify.app/images/splash.png',
+        splashBackgroundColor: '#180822',
+        subtitle: 'Surf the sky and collect coins',
+        description: 'A fun game where you surf the sky and collect coins!',
+        primaryCategory: 'games',
+        heroImageUrl: 'https://sprightly-kringle-3f3e1d.netlify.app/images/banner.png',
+        tagline: 'Surf, collect, score big!',
+        ogTitle: '1024 - Addictive Sky Surfing Game',
+        ogDescription: 'Play 1024 and surf through the sky collecting coins in this addictive mini-game!',
+        ogImageUrl: 'https://sprightly-kringle-3f3e1d.netlify.app/images/banner.png',
+        screenshotUrls: [
+          'https://sprightly-kringle-3f3e1d.netlify.app/images/banner.png'
+        ],
+        noIndex: false
+      }
+    })
+  };
+}
