@@ -1,30 +1,32 @@
 {
   
   "accountAssociation": {
-    
+    "header": "YOUR_ACCOUNT_ASSOCIATION_HEADER",
+    "payload": "YOUR_ACCOUNT_ASSOCIATION_PAYLOAD",
+    "signature": "YOUR_ACCOUNT_ASSOCIATION_SIGNATURE"
   },
 
 
   "frame": {
     "version": "1",
     "name": "1024",
-    "iconUrl": "https://sprightly-kringle-3f3e1d.netlify.app/images/icon.png",
-    "homeUrl": "https://sprightly-kringle-3f3e1d.netlify.app/frame.html",
-    "imageUrl": "https://sprightly-kringle-3f3e1d.netlify.app/images/banner.png",
+    "iconUrl": "https://YOUR_NETLIFY_URL/images/icon.png",
+    "homeUrl": "https://YOUR_NETLIFY_URL/frame.html",
+    "imageUrl": "https://YOUR_NETLIFY_URL/images/banner.png",
     "buttonTitle": "Play 1024",
-    "splashImageUrl": "https://sprightly-kringle-3f3e1d.netlify.app/images/splash.png",
+    "splashImageUrl": "https://YOUR_NETLIFY_URL/images/splash.png",
     "splashBackgroundColor": "#180822",
     "subtitle": "Surf the sky and collect coins",
     "description": "A fun game where you surf the sky and collect coins!",
     "primaryCategory": "games",
     "tags": ["puzzle", "game", "numbers", "tiles"],
-    "heroImageUrl": "https://sprightly-kringle-3f3e1d.netlify.app/images/banner.png",
+    "heroImageUrl": "https://YOUR_NETLIFY_URL/images/banner.png",
     "tagline": "Surf, collect, score big!",
     "ogTitle": "Addictive Sky Surfing Game",
     "ogDescription": "Play 1024 and surf through the sky collecting coins in this addictive mini-game!",
-    "ogImageUrl": "https://sprightly-kringle-3f3e1d.netlify.app/images/banner.png",
+    "ogImageUrl": "https://YOUR_NETLIFY_URL/images/banner.png",
     "screenshotUrls": [
-      "https://sprightly-kringle-3f3e1d.netlify.app/images/banner.png"
+      "https://YOUR_NETLIFY_URL/images/banner.png"
     ],
     "noIndex": false
   }
