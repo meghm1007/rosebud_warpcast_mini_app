@@ -1,20 +1,19 @@
-# 1024 - Warpcast Mini-App
+# Warpcast Mini-App
 
 <div align="center">
   <img src="images/banner.png" alt="1024 Game Banner" width="600"/>
-  <p>A fun mini-app game where you surf the sky and collect coins!</p>
 </div>
 
 ## Overview
 
-This repository contains a ready-to-deploy Warpcast Mini-App that embeds the 1024 game. The game is a fun sky surfing experience where players collect coins while navigating through the air.
+This repository contains a ready-to-deploy Warpcast Mini-App. You can convert a vibe-coded game on Rosebud AI into your own mini-app own Warpcast/Farcaster
 
 ## Prerequisites
 
 - GitHub account (for cloning the repository)
 - Netlify account (for deployment)
 - Warpcast account (for Mini-App setup)
-- Rosebud.ai game URL (optional - you can use your own game URL)
+- Rosebud AI game URL
 
 ## Deployment Guide
 
@@ -37,7 +36,13 @@ cd rosebud_warpcast_mini_app
 
 ### Step 3: Update Configuration Files
 
-Replace placeholder values in the following files:
+> **💡 Pro Tip:** Use your editor's search and replace functionality to quickly replace all placeholder values:
+> - Windows/Linux: `Ctrl + Shift + F` 
+> - Mac: `Command + Shift + F`
+> - Search for `YOUR_NETLIFY_URL` and replace all instances with your actual Netlify URL
+> - Do the same for `YOUR_ROSEBUD_GAME_URL` and replace it with the actual Rosebud link
+
+Replace placeholder values in the following files (manual way):
 
 1. **index.html**:
    - Replace all instances of `YOUR_NETLIFY_URL` with your actual Netlify URL
@@ -106,12 +111,9 @@ Create a new cast on Warpcast and paste your mini-app URL (your Netlify URL). Wh
 - [Warpcast Developers Portal](https://warpcast.com/~/developers)
 - [Netlify Documentation](https://docs.netlify.com/)
 
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Acknowledgments
 
-- Rosebud.ai for the game engine
-- Farcaster for the Mini-Apps platform
-- Warpcast for the client support
+- Rosebud AI
+- Warpcast/Farcaster
+- Netlify
