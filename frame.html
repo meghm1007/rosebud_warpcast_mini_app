@@ -3,21 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>1024 — Frame</title>
 
+    <!-- //TODO: CHANGE TITLE OF THE GAME -->
+
+    <title>GAME TITLE GOES HERE</title>
+
+    <!-- //TODO: ADD YOUR NETLIFY URL -->
     <meta
       property="fc:frame"
-      content='{"version":"1","image":"https://YOUR_NETLIFY_URL/images/banner.png","buttons":[{"label":"Play 1024","action":"post"}]}'
+      content='{"version":"1","image":"YOUR_NETLIFY_URL/images/banner.png","buttons":[{"label":"Play 1024","action":"post"}]}'
     />
-
+    <!-- //TODO: CHANGE DESCRIPTION OF THE GAME -->
     <!-- Open Graph meta tags for better social sharing -->
-    <meta property="og:title" content="1024 - Addictive Sky Surfing Game" />
-    <meta property="og:description" content="Play 1024 and surf through the sky collecting coins in this addictive mini-game!" />
-    <meta property="og:image" content="https://YOUR_NETLIFY_URL/images/banner.png" />
-    <meta property="og:url" content="https://YOUR_NETLIFY_URL/frame.html" />
+    <meta property="og:title" content="GAME TITLE GOES HERE" />
+    <meta property="og:description" content="GAME DESCRIPTION GOES HERE" />
+    <meta
+      property="og:image"
+      content="YOUR_NETLIFY_URL/images/banner.png"
+    />
+    <meta property="og:url" content="YOUR_NETLIFY_URL/frame.html" />
     <meta property="og:type" content="website" />
-    <meta name="description" content="A fun game where you surf the sky and collect coins!" />
-    <meta name="keywords" content="puzzle, game, numbers, tiles, 1024, farcaster, mini app" />
+    <meta name="description" content="GAME DESCRIPTION GOES HERE" />
+    <meta
+      name="keywords"
+      content="GAME TAGS GO HERE: puzzle, game, numbers, tiles, 1024, farcaster, mini app"
+    />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -340,26 +350,30 @@
     <div id="root"></div>
 
     <script>
+      //TODO: CHANGE THESE VALUES
+      //TODO: ADD YOUR ROSEBUD GAME URL
+      //TODO: CHANGE THE GAME TITLE AND DESCRIPTION
+      //TODO: CHANGE THE BUTTONS TEXT AND ICONS
       document.addEventListener("DOMContentLoaded", function () {
         // Game configuration
         const gameConfig = {
           gameUrl: "YOUR_ROSEBUD_GAME_URL", // Replace with your Rosebud game URL
-          title: "1024",
-          description: "Surf the sky and collect coins",
+          title: "GAME TITLE GOES HERE",
+          description: "GAME DESCRIPTION GOES HERE",
           buttons: {
             button1: {
               icon: "🪙",
-              text: "Coins",
+              text: "GAME BUTTON 1 TEXT GOES HERE",
             },
             button2: {
               icon: "🪨",
-              text: "Stone",
+              text: "GAME BUTTON 2 TEXT GOES HERE",
             },
             button3: {
               icon: "🏆",
-              text: "Win",
+              text: "GAME BUTTON 3 TEXT GOES HERE",
             },
-          }
+          },
         };
 
         // Create app container

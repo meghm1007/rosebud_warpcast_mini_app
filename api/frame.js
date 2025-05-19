@@ -25,22 +25,22 @@ exports.handler = async function(event, context) {
       frame: {
         version: '1',
         name: '1024',
-        iconUrl: 'https://YOUR_NETLIFY_URL/images/icon.png',
-        homeUrl: 'https://YOUR_NETLIFY_URL/frame.html',
-        imageUrl: 'https://YOUR_NETLIFY_URL/images/banner.png',
+        iconUrl: 'YOUR_NETLIFY_URL/images/icon.png',
+        homeUrl: 'YOUR_NETLIFY_URL/frame.html',
+        imageUrl: 'YOUR_NETLIFY_URL/images/banner.png',
         buttonTitle: 'Play 1024',
-        splashImageUrl: 'https://YOUR_NETLIFY_URL/images/splash.png',
+        splashImageUrl: 'YOUR_NETLIFY_URL/images/splash.png',
         splashBackgroundColor: '#180822',
         subtitle: 'Surf the sky and collect coins',
         description: 'A fun game where you surf the sky and collect coins!',
         primaryCategory: 'games',
-        heroImageUrl: 'https://YOUR_NETLIFY_URL/images/banner.png',
+        heroImageUrl: 'YOUR_NETLIFY_URL/images/banner.png',
         tagline: 'Surf, collect, score big!',
         ogTitle: '1024 - Addictive Sky Surfing Game',
         ogDescription: 'Play 1024 and surf through the sky collecting coins in this addictive mini-game!',
-        ogImageUrl: 'https://YOUR_NETLIFY_URL/images/banner.png',
+        ogImageUrl: 'YOUR_NETLIFY_URL/images/banner.png',
         screenshotUrls: [
-          'https://YOUR_NETLIFY_URL/images/banner.png'
+          'YOUR_NETLIFY_URL/images/banner.png'
         ],
         noIndex: false
       }
