@@ -11,9 +11,9 @@ This repository contains a ready-to-deploy Warpcast Mini-App. You can convert a 
 ## Prerequisites
 
 - GitHub account (for cloning the repository)
-- Netlify account (for deployment)
-- Warpcast account (for Mini-App setup)
-- Rosebud AI game URL
+- [Netlify](https://www.netlify.com/) account (for deployment)
+- [Warpcast](https://www.warpcast.com/) account (for Mini-App setup)
+- [Rosebud AI](https://www.rosebud.ai/) game URL
 
 ## Deployment Guide
 
@@ -57,6 +57,10 @@ Several files contain TODO comments that indicate what you need to change:
 
 3. **api/frame.js** - Replace all occurrences of `YOUR_NETLIFY_URL` with your actual Netlify URL.
 
+<div align="center">
+  <img src="assets/change_todo.gif" alt="Update TODO Items" width="600"/>
+</div>
+
 ### Step 3: Deploy to Netlify
 
 1. Go to [Netlify](https://app.netlify.com/)
@@ -65,6 +69,10 @@ Several files contain TODO comments that indicate what you need to change:
 4. Drag and drop this entire folder onto the Netlify dashboard
 5. Wait for deployment to complete
 6. Copy your new Netlify URL (e.g., `random-name-123456.netlify.app`)
+
+<div align="center">
+  <img src="assets/netlify_upload.gif" alt="Netlify Upload Process" width="600"/>
+</div>
 
 ### Step 4: Update Configuration Files
 
@@ -77,6 +85,18 @@ After getting your Netlify URL, go back and update all the instances of `YOUR_NE
 > - Do the same for `YOUR_ROSEBUD_GAME_URL` and replace it with the actual Rosebud link
 
 Replace placeholder values in the **index.html**, **frame.html**, and **api/frame.js**👆🏻
+
+Make sure you even change the values in the **/well-known/farcaster.json** file as well
+
+The reason why you need to make the same changes to so many placeholders is that each of the placeholders has a different functionality - one for the frame preview, one for hosting, etc.
+
+<div align="center">
+  <img src="assets/farcaster_ss.png" alt="Farcaster.json File Structure" width="600"/>
+</div>
+
+<div align="center">
+  <img src="assets/rename_placeholder.gif" alt="Replace Placeholder URLs" width="600"/>
+</div>
 
  **Images** (Optional):
    - Update images in the `/images` folder as needed
@@ -101,6 +121,10 @@ Replace placeholder values in the **index.html**, **frame.html**, and **api/fram
    }
    ```
 
+<div align="center">
+  <img src="assets/warpcast_verif.gif" alt="Warpcast Verification Process" width="600"/>
+</div>
+
 ### Step 6: Final Deployment
 
 After updating all the configuration files, redeploy your project to Netlify using the same process as in Step 2.
@@ -113,87 +137,54 @@ After updating all the configuration files, redeploy your project to Netlify usi
 4. If everything works correctly, click "Add to Warpcast"
 5. Your mini-app is now available in the Warpcast store!
 
+<div align="center">
+  <img src="assets/submit_mini_app.gif" alt="Submit Mini-App to Warpcast" width="600"/>
+</div>
+
 ## Sharing Your Mini-App
 
 Create a new cast on Warpcast and paste your mini-app URL (your Netlify URL). When users click on the link, they'll be able to access and use your mini-app.
 
+<div align="center">
+  <img src="assets/sharing_your_mini_app.gif" alt="Sharing Your Mini-App on Warpcast" width="600"/>
+</div>
+
 ## Troubleshooting
 
-### Common Issues and Solutions
+### URL Format Issues
 
-- **Embed Not Present / Embed Not Valid errors:**
-  - Make sure your `fc:frame` meta tags are correctly formatted
-  - Check that all URLs in the meta tags are absolute and pointing to your Netlify domain
-  - Verify that the version number is correct (use "1" for standard frames)
+> ⚠️ **Important:** When replacing URL placeholders, use the correct format
 
-- **Game doesn't load:**
-  - Confirm your Rosebud game URL is correct
-  - Check browser console for any JavaScript errors
-  - Ensure the iframe has the correct permissions set
+✅ **Correct format**: `https://your-site-name.netlify.app`  
+❌ **Incorrect formats**:
+- `https://your-site-name.netlify.app/` (trailing slash)
+- `https://your-site-name.netlify.app/frame.html` (specific page)
 
-- **Images not showing:**
-  - Verify that your image paths in the HTML files are correct
-  - Make sure all images are uploaded to the `/images` folder
-  - Check that the images are not too large (should be under 10MB)
+### Loading Issues in Warpcast
 
-- **Farcaster account association issues:**
-  - Regenerate the association values using the Warpcast Developer tools
-  - Verify that the `.well-known/farcaster.json` file is correctly formatted
-  - Make sure the domain you're verifying matches exactly with your Netlify domain
+If your mini-app doesn't load when sharing the Netlify link in Warpcast, try this simple fix:
 
-- **Deployment issues:**
-  - After updating files locally, make sure to redeploy to Netlify
-  - Check Netlify deployment logs for any errors
-  - Clear browser cache or try in an incognito window to see the latest changes
+1. Delete the link from your cast
+2. Refresh the page 
+3. Paste the link again
 
-### Debugging Tools
+You may need to repeat this process a few times. This is typically just a caching issue that resolves itself.
 
-- Use the [Farcaster Frame Validator](https://warpcast.com/~/developers/frames) to check your frame format
-- Use browser developer tools to inspect network requests and JavaScript errors
-- Test your mini-app in the [Warpcast Debug Tool](https://warpcast.com/~/developers/mini-apps/debug) before publishing
+<div align="center">
+  <img src="assets/warpcast_troubleshooting.gif" alt="Warpcast Troubleshooting Process" width="600"/>
+</div>
 
 ## Advanced Customization
 
-### Completely Redesign Your Mini-App
+You can fully customize your mini-app by modifying:
 
-You can completely change the look and feel of your mini-app:
-
-1. **Custom CSS Styling:**
-   - Modify the `<style>` section in frame.html to change colors, fonts, and layouts
-   - Add animations or transitions for a more polished feel
-   - Customize the loading overlay and game instructions
-
-2. **Vibe-Coding the Design:**
-   - Take your existing repo and use AI tools to transform the design completely
-   - Example prompt: "Transform this game into a cyberpunk-themed experience with neon colors and futuristic UI elements"
-   - Update the CSS variables at the top of the stylesheet to quickly change theme colors
-
-3. **Custom Functionality:**
-   - Modify the script section in frame.html to add new features
-   - Add custom animations, sound effects, or game mechanics
-   - Implement additional screens or modal popups
-
-4. **Different Game Integration:**
-   - You can replace the Rosebud game with any other iframe-compatible game or app
-   - Adjust the iframe permissions and attributes as needed for your specific integration
-   - Change the button controls to match your new game's mechanics
-
-### Extending The Mini-App
-
-- Add user authentication using Farcaster's authentication features
-- Implement leaderboards or social features
-- Create multiple game modes or levels
-- Add sound effects or background music
-
-## Resources
-
-- [Farcaster Mini Apps Documentation](https://miniapps.farcaster.xyz/)
-- [Warpcast Developers Portal](https://warpcast.com/~/developers)
-- [Netlify Documentation](https://docs.netlify.com/)
-- [Rosebud AI Documentation](https://docs.rosebud.ai)
+- **Visual Design**: Change colors, fonts, and layouts by editing the CSS in frame.html
+- **Game Integration**: Replace the Rosebud game with any iframe-compatible app
+- **Functionality**: Add new features, animations, or game mechanics
+- **Buttons and Controls**: Modify the game controls to match your concept
 
 ## Acknowledgments
 
-- Rosebud AI
-- Warpcast/Farcaster
-- Netlify
+- [Rosebud AI](https://www.rosebud.ai)
+- [Warpcast/Farcaster](https://www.warpcast.com)
+- [Netlify](https://www.netlify.com)
