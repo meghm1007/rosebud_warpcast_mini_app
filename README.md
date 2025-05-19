@@ -26,7 +26,7 @@ cd rosebud_warpcast_mini_app
 ```
 
 <div align="center">
-  <img src="gif_1_git.gif" alt="Git Clone Process" width="600"/>
+  <img src="assets/gif_1_git.gif" alt="Git Clone Process" width="600"/>
 </div>
 
 ### Step 2: Update the TODO Items
