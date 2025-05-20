@@ -151,28 +151,37 @@ Create a new cast on Warpcast and paste your mini-app URL (your Netlify URL). Wh
 
 ## Troubleshooting
 
-### URL Format Issues
-
-> ⚠️ **Important:** When replacing URL placeholders, use the correct format
-
-✅ **Correct format**: `https://your-site-name.netlify.app`  
-❌ **Incorrect formats**:
-- `https://your-site-name.netlify.app/` (trailing slash)
-- `https://your-site-name.netlify.app/frame.html` (specific page)
-
-### Loading Issues in Warpcast
-
-If your mini-app doesn't load when sharing the Netlify link in Warpcast, try this simple fix:
-
-1. Delete the link from your cast
-2. Refresh the page 
-3. Paste the link again
-
-You may need to repeat this process a few times. This is typically just a caching issue that resolves itself.
-
 <div align="center">
   <img src="assets/warpcast_troubleshooting.gif" alt="Warpcast Troubleshooting Process" width="600"/>
 </div>
+
+### Common Issues
+
+| Problem | Solution |
+|---------|----------|
+| **🔗 Incorrect URL Format** | Use exactly `https://your-site-name.netlify.app` without trailing slash or page name |
+| **🔄 Mini-App Not Loading** | Delete link, refresh page, paste again (may need multiple attempts) |
+| **❌ Frame Invalid Error** | Reduce tags to 5 or fewer (Warpcast limit) |
+| **⏱️ Slow Netlify Upload** | Delete the `/assets` folder before uploading |
+
+### URL Format Guide
+
+```
+✅ Correct:   https://your-site-name.netlify.app
+❌ Incorrect: https://your-site-name.netlify.app/
+❌ Incorrect: https://your-site-name.netlify.app/frame.html
+```
+
+### Caching Issues
+
+If your mini-app doesn't appear correctly in Warpcast:
+
+1. Delete the link from your cast
+2. Refresh the page completely
+3. Paste the link again
+4. Repeat if necessary
+
+This is typically just a caching issue that resolves after a few attempts.
 
 ## Advanced Customization
 
